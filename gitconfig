@@ -1,0 +1,51 @@
+[color]
+    branch = auto
+    ui = auto
+    status = auto
+[alias]
+    st = status
+    lgdo = log --decorate --oneline
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --
+    lga = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset' --abbrev-commit --all
+    l1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    l2 = log --graph --abbrev-commit --decorate --format=format:'%C(red)%h%C(reset) - %C(bold yellow)%d%C(reset) %C(bold green)%s%C(reset) %C(blue)- %an%C(reset) %C(blue)%aD%C(reset) %C(blue)(%ar)%C(reset)' --all
+    ci = commit
+    cia = commit --amend
+    ciah = commit --amend -C HEAD
+    cich = commit -c HEAD
+    co = checkout
+    cob = checkout -b
+    coa = checkout -- '*'
+    ps = push
+    psu = push -u
+    psf = push -f
+    pl = pull
+    fc = fetch
+    fca = fetch --all
+    ap = add -p
+    an = add -N
+    df = diff
+    dfc = diff --cached
+    dtr = diff-tree --no-commit-id --name-only -r
+    dst = diff --name-status
+    ffm = merge --ff-only
+    nem = merge --no-edit
+    mgab = merge --abort
+    rs = reset
+    rsh = reset --hard
+    rshp = reset --hard HEAD^
+    rss = reset --soft
+    ss = stash
+    ssp = stash pop
+    ssd = stash drop
+    list-tags = for-each-ref --format=\"%(color:yellow)tag %(objectname)%(color:reset)\nname:   %(refname:short)\nauthor: %(taggername) %(taggeremail)\ndate:   %(taggerdate)\n\n    %(subject)\n\ncommit: %(*objectname)\nauthor: %(*authorname) %(*authoremail)\ndate:   %(*authordate)\n\n    %(*subject)\n\" refs/tags
+[core]
+    editor = vim
+[credential]
+[commit]
+	gpgsign = true
+[http]
+	cookiefile = ~/.gitcookies
+[gpg]
+	program = gpg2
+[user]
