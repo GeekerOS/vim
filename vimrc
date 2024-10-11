@@ -4,20 +4,22 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
-Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'dense-analysis/ale'
-Plug 'fatih/vim-go'
 Plug 'rhysd/vim-clang-format'
 Plug 'maxboisvert/vim-simple-complete'
 Plug 'zivyangll/git-blame.vim'
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'altercation/vim-colors-solarized'
+
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
+Plug 'fatih/vim-go'
 
 call plug#end()
 
@@ -65,6 +67,9 @@ let g:ale_linters = {
   \   'c': ['clang', 'gcc'],
   \   'cpp': ['clang', 'g++'],
   \ }
+
+" vim-perl/vim-perl
+let g:perl_enabled=1
 
 " fatih/vim-go
 let g:go_fmt_command = "gofmt"
