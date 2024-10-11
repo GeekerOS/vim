@@ -1,4 +1,4 @@
-🐸 Personal Vim8 Configs
+🐸 Personal VimIDE
 =====================
 
 Before installation, backup and clean all files and directories starting with '.vim' in the HOME directory to avoid effects related to the old and new configurations.

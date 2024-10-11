@@ -150,6 +150,8 @@ let g:cpp_posix_standard = 1
 "let g:cpp_experimental_template_highlight = 1
 
 " ycm-core/YouCompleteMe
+nnoremap <silent> <c-g> :YcmCompleter GoTo<CR>
+
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -190,7 +192,8 @@ nnoremap <leader>r :ToggleRelativeNumberTemporary<CR>
 
 " internal plugin and hot keys
 " vim internal netrw plugin key
-nnoremap <F3> :Vexplore<CR>
+nnoremap <silent> <c-t> :Vexplore<CR>
+
 let g:netrw_winsize = 30
 
 " basic settings
