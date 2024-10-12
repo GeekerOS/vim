@@ -154,6 +154,7 @@ let g:cpp_posix_standard = 1
 
 " ycm-core/YouCompleteMe
 nnoremap <silent> <c-g> :YcmCompleter GoTo<CR>
+nnoremap <silent> <c-m> :YcmCompleter GetType<CR>
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
