@@ -27,6 +27,9 @@ call plug#end()
 nnoremap <silent> <Leader>gg :Ag <C-R><C-W><CR>
 nnoremap <silent> <c-p> :Files <CR>
 
+" majutsushi/tagbar
+nnoremap <silent> <Leader>kk :TagbarOpen<CR>
+
 " ludovicchabant/vim-gutentags
 let g:gutentags_enabled = 1
 let g:gutentags_add_default_project_roots = 0
