@@ -28,7 +28,7 @@ nnoremap <silent> <Leader>gg :Ag <C-R><C-W><CR>
 nnoremap <silent> <c-p> :Files <CR>
 
 " majutsushi/tagbar
-nnoremap <silent> <Leader>kk :TagbarOpen<CR>
+nnoremap <silent> <Leader>k :TagbarOpen<CR>
 
 " ludovicchabant/vim-gutentags
 let g:gutentags_enabled = 1
@@ -153,8 +153,9 @@ let g:cpp_posix_standard = 1
 "let g:cpp_experimental_template_highlight = 1
 
 " ycm-core/YouCompleteMe
-nnoremap <silent> <c-g> :YcmCompleter GoTo<CR>
-nnoremap <silent> <c-m> :YcmCompleter GetType<CR>
+nnoremap <silent> <Leader>d :YcmCompleter GetDoc <C-R><C-W><CR>
+nnoremap <silent> <Leader>g :YcmCompleter GoTo<CR>
+nnoremap <silent> <Leader>t :YcmCompleter GetType<CR>
 
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
