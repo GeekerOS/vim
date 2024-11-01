@@ -169,6 +169,31 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " vim-scripts/DoxygenToolkit.vim
+
+let license = [
+            \"",
+            \ "MIT License",
+            \ "",
+            \ "Copyright (c) 2024 ylgeeker",
+            \ "",
+            \ "Permission is hereby granted, free of charge, to any person obtaining a copy",
+            \ "of this software and associated documentation files (the \"Software\"), to deal",
+            \ "in the Software without restriction, including without limitation the rights",
+            \ "to use, copy, modify, merge, publish, distribute, sublicense, and/or sell",
+            \ "copies of the Software, and to permit persons to whom the Software is",
+            \ "furnished to do so, subject to the following conditions:",
+            \ "",
+            \ "copies or substantial portions of the Software.",
+            \ "",
+            \ "THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR",
+            \ "IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,",
+            \ "FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE",
+            \ "AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER",
+            \ "LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,",
+            \ "OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE",
+            \ "SOFTWARE.",
+            \]
+
 let g:DoxygenToolkit_briefTag_funcName = "yes"
 let g:DoxygenToolkit_briefTag_pre = "@brief "
 let g:DoxygenToolkit_paramTag_pre = "@param "
@@ -179,6 +204,8 @@ let g:DoxygenToolkit_versionTag = "@version "
 let g:DoxygenToolkit_blockTag = "@name "
 let g:DoxygenToolkit_classTag = "@class "
 let g:doxygen_enhanced_color = 1
+let g:DoxygenToolkit_authorName=""
+let g:DoxygenToolkit_licenseTag = join(license,"\n")
 
 " relative line number
 function! ToggleRelativeNumberTemporary()
