@@ -229,6 +229,7 @@ nnoremap <silent> <c-t> :Vexplore<CR>
 let g:netrw_winsize = 30
 
 " basic settings
+inoremap jk <esc>
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
 set encoding=utf-8
