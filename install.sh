@@ -2,19 +2,23 @@
 set -eo pipefail
 
 # install oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+if [[ ! -e ~/.oh-my-zsh ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 # make install
 rootpath=/tmp/ylgeeker/vim/
 rm -rf $rootpath && mkdir -p $rootpath
+cd $rootpath
+pwd
 
 # install base commands
 run_yum_cmd=0
 command -v yum >/dev/null 2>&1 || run_yum_cmd=1
 if [ "$run_yum_cmd" -ne 1 ]; then
-yum -y install gcc git wget make clang llvm the_silver_searcher >> $rootpath/install.log 2>&1
+    yum -y install gcc git wget make clang llvm the_silver_searcher >> $rootpath/install.log 2>&1
 else
-apt-get -y install gcc git wget make clang llvm silversearcher-ag >> $rootpath/install.log 2>&1
+    apt-get -y install gcc git wget make clang llvm silversearcher-ag >> $rootpath/install.log 2>&1
 fi
 echo -e "\e[34;1m🌈  Commands gcc/git/wget/make/clang/llvm/ag install successfully!\n\033[0m"
 
@@ -26,8 +30,8 @@ if [ "$need_install_vim" -eq 1 ]; then
 else
     version=`vim --version | head -n 1 | awk -F ' ' '{print $5}'`
     major=`echo $version | awk -F '.' '{print $1}'`
-    if [ $major -lt 8 ]; then
-        echo -e "\e[34;1m🐱  Found local vim version $version which need to upgrade version to 8.0+ ...\033[0m"
+    if [ $major -lt 9 ]; then
+        echo -e "\e[34;1m🐱  Found local vim version $version which need to upgrade version to 9.0+ ...\033[0m"
         need_install_vim=1
     else
         echo -e "\e[34;1m👀  Local vim version $version is already installed!\033[0m"
@@ -36,10 +40,20 @@ fi
 
 # install local new vim
 if [ "$need_install_vim" -eq 1 ]; then
+    cd $rootpath
+
+    echo -e "\e[34;1m🐱  Install the python3(it may take some time to compile, please be patient) ...\033[0m"
+    wget https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tgz
+    tar -zvxf Python-3.11.10.tgz
+    cd Python-3.11.10
+    ./configure --enable-shared --enable-optimizations --with-ensurepip=install --with-lto=full
+
+    cd $rootpath
+
     echo -e "\e[34;1m🐱  Install the new vim version now (it may take some time to compile, please be patient) ...\033[0m"
     cd $rootpath
     git clone https://github.com/vim/vim.git >> $rootpath/install.log 2>&1
-    cd vim/src && git checkout v8.2.3430 >> $rootpath/install.log 2>&1
+    cd vim/src && git checkout v9.1.0949 >> $rootpath/install.log 2>&1
 
     ./configure --enable-cscope --enable-fontset >> $rootpath/install.log 2>&1
     make -j4 >> $rootpath/install.log 2>&1
@@ -108,9 +122,12 @@ if [ "$need_config_vim" -eq 1 ]; then
     echo -e "\e[34;1m🌈  Install and config vim-plug successfully!\n\033[0m"
 fi
 
-echo -e "\e[34;1m\n\t 🐸 🐸 🐸  Enjoy It ~ 🐸 🐸 🐸 \n\033[0m"
-
 # make the vim config effect(the workflow may be broken and stop if not do this at end)
 if [ "$need_config_vim" -eq 1 ]; then
-vim +slient +PlugInstall +qall --not-a-term
+    vim +slient +PlugInstall +qall --not-a-term
+    cd ~/.vim/plugged/YouCompleteMe
+    python3 install.py  --force-sudo --all --verbose
 fi
+
+echo -e "\e[34;1m\n\t 🐸 🐸 🐸  Enjoy It ~ 🐸 🐸 🐸 \n\033[0m"
+
