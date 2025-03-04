@@ -59,7 +59,7 @@ let g:ale_fix_on_save = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚡'
 let g:ale_cpp_gcc_options = ' -std=c++11 '
-let g:ale_cpp_clang_options = ' -std=c++11 '
+let g:ale_cpp_clang_options = ' -std=c++11 --header-insertion=never'
 let g:ale_linters_explicit = 1
 let g:ale_cmake_options = ' -DCMAKE_EXPORT_COMPILE_COMMANDS=ON '
 let g:ale_linters = {
@@ -229,6 +229,7 @@ nnoremap <silent> <c-t> :Vexplore<CR>
 let g:netrw_winsize = 30
 
 " basic settings
+set backupcopy=yes
 inoremap jk <esc>
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
