@@ -4,7 +4,7 @@ apt update
 apt upgrade -y
 
 # make install
-rootpath=/tmp/ylgeeker/vim/
+rootpath=/tmp/YLGProjects/vim/
 rm -rf $rootpath && mkdir -p $rootpath
 cd $rootpath
 pwd
@@ -13,6 +13,8 @@ pwd
 run_yum_cmd=0
 command -v yum >/dev/null 2>&1 || run_yum_cmd=1
 if [ "$run_yum_cmd" -ne 1 ]; then
+    yum update
+    yum upgrade -y
     yum groupinstall -y "Development Tools"
     yum install -y python3-devel python3-pip
     yum -y install zsh npm curl java-latest-openjdk-devel golang gcc git wget make cmake clang clangd clang-format llvm the_silver_searcher
@@ -104,7 +106,7 @@ fi
 
 # check local vim-plug
 need_config_vim=0
-wget -N https://raw.githubusercontent.com/ylgeeker/vim/master/vimrc -P $rootpath >> $rootpath/install.log 2>&1
+wget -N https://raw.githubusercontent.com/YLGProjects/vim/master/vimrc -P $rootpath >> $rootpath/install.log 2>&1
 if [ -f "${HOME}/.vimrc" ]; then
     newFile=`md5sum $rootpath/vimrc | awk -F ' ' '{print $1}'`
     curFile=`md5sum ${HOME}/.vimrc | awk -F ' ' '{print $1}'`

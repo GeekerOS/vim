@@ -3,14 +3,14 @@
 
 Before installation, backup and clean all files and directories starting with '.vim' in the HOME directory to avoid effects related to the old and new configurations.
 
-Recommended OS is CentOS 8 which have Clang 11+, GCC 7+/8+, and you also could install universal ctags(https://github.com/universal-ctags/ctags) by yourself for more ctag features.
+Recommended OS is Ubuntu which have Clang 11+, GCC 7+/8+, and you also could install universal ctags(https://github.com/universal-ctags/ctags) by yourself for more ctag features.
 
 **👀 Install:**
 
 Run the command to install and config your vim shit ~
 
 ```sh
-sudo wget -O - https://raw.githubusercontent.com/ylgeeker/vim/master/install.sh | sh
+sudo wget -O - https://raw.githubusercontent.com/YLGProjects/vim/master/install.sh | bash
 ```
 **🌈 Others:**
 
