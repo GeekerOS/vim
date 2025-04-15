@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 set -eo pipefail
-apt update
-apt upgrade -y
 
 # make install
 rootpath=/tmp/YLGProjects/vim/
@@ -13,12 +11,16 @@ pwd
 run_yum_cmd=0
 command -v yum >/dev/null 2>&1 || run_yum_cmd=1
 if [ "$run_yum_cmd" -ne 1 ]; then
+    yum install epel-release -y
     yum update
     yum upgrade -y
+
     yum groupinstall -y "Development Tools"
     yum install -y python3-devel python3-pip
-    yum -y install zsh npm curl java-latest-openjdk-devel golang gcc git wget make cmake clang clangd clang-format llvm the_silver_searcher
+    yum -y install zsh npm curl java golang gcc git wget make cmake clang clangd clang-format llvm the_silver_searcher
 else
+    apt update
+    apt upgrade -y
     apt -y install build-essential python3-dev python3-pip
     apt -y install zsh npm curl openjdk-17-jdk golang gcc git wget make cmake clang clangd clang-format llvm silversearcher-ag
 fi
