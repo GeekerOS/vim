@@ -67,8 +67,8 @@ let g:ale_linters = {
   \   'zsh': ['shell'],
   \   'python': ['pylint'],
   \   'go': ['gofmt', 'golint'],
-  \   'c': ['clang', 'gcc'],
-  \   'cpp': ['clang', 'g++'],
+  \   'c': ['clangd', 'gcc'],
+  \   'cpp': ['clangd', 'g++'],
   \ }
 
 " vim-perl/vim-perl

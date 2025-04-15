@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 set -eo pipefail
-
-# install oh-my-zsh
-if [[ ! -e ~/.oh-my-zsh ]]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
+apt update
+apt upgrade -y
 
 # make install
 rootpath=/tmp/ylgeeker/vim/
@@ -16,11 +13,19 @@ pwd
 run_yum_cmd=0
 command -v yum >/dev/null 2>&1 || run_yum_cmd=1
 if [ "$run_yum_cmd" -ne 1 ]; then
-    yum -y install gcc git wget make clang llvm the_silver_searcher >> $rootpath/install.log 2>&1
+    yum groupinstall -y "Development Tools"
+    yum install -y python3-devel python3-pip
+    yum -y install zsh npm curl java-latest-openjdk-devel golang gcc git wget make cmake clang clangd clang-format llvm the_silver_searcher
 else
-    apt-get -y install gcc git wget make clang llvm silversearcher-ag >> $rootpath/install.log 2>&1
+    apt -y install build-essential python3-dev python3-pip
+    apt -y install zsh npm curl openjdk-17-jdk golang gcc git wget make cmake clang clangd clang-format llvm silversearcher-ag
 fi
-echo -e "\e[34;1m🌈  Commands gcc/git/wget/make/clang/llvm/ag install successfully!\n\033[0m"
+echo -e "\e[34;1m🌈  Commands curl/gcc/git/wget/make/clang/llvm/ag install successfully!\n\033[0m"
+
+# install oh-my-zsh
+if [[ ! -e ~/.oh-my-zsh ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
 
 # check local vim version
 need_install_vim=0
@@ -42,11 +47,11 @@ fi
 if [ "$need_install_vim" -eq 1 ]; then
     cd $rootpath
 
-    echo -e "\e[34;1m🐱  Install the python3(it may take some time to compile, please be patient) ...\033[0m"
-    wget https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tgz
-    tar -zvxf Python-3.11.10.tgz
-    cd Python-3.11.10
-    ./configure --enable-shared --enable-optimizations --with-ensurepip=install --with-lto=full
+    # echo -e "\e[34;1m🐱  Install the python3(it may take some time to compile, please be patient) ...\033[0m"
+    # wget https://www.python.org/ftp/python/3.11.10/Python-3.11.10.tgz
+    # tar -zvxf Python-3.11.10.tgz
+    # cd Python-3.11.10
+    # ./configure --enable-shared --enable-optimizations --with-ensurepip=install --with-lto=full
 
     cd $rootpath
 
@@ -55,7 +60,7 @@ if [ "$need_install_vim" -eq 1 ]; then
     git clone https://github.com/vim/vim.git >> $rootpath/install.log 2>&1
     cd vim/src && git checkout v9.1.0949 >> $rootpath/install.log 2>&1
 
-    ./configure --enable-cscope --enable-fontset >> $rootpath/install.log 2>&1
+    ./configure --enable-cscope --enable-fontset --enable-python3interp=yes --with-python3-config-dir=$(python3-config --configdir)  >> $rootpath/install.log 2>&1
     make -j4 >> $rootpath/install.log 2>&1
     make install >> $rootpath/install.log 2>&1
 
