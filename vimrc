@@ -157,7 +157,7 @@ nnoremap <silent> <Leader>d :YcmCompleter GetDoc <C-R><C-W><CR>
 nnoremap <silent> <Leader>g :YcmCompleter GoTo<CR>
 nnoremap <silent> <Leader>t :YcmCompleter GetType<CR>
 
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/examples/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -256,4 +256,4 @@ set laststatus=2
 syntax enable
 set background=dark
 let g:solarized_termtrans = 1
-colorscheme solarized
+" colorscheme solarized
