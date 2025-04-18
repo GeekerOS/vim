@@ -54,6 +54,12 @@ else
     sudo apt install -y build-essential autoconf automake libtool pkg-config m4 autoconf-archive gettext flex bison
     sudo apt install -y zsh npm curl openjdk-17-jdk gcc git wget make cmake clang clangd clang-format llvm silversearcher-ag
 
+    sudo apt install apt-transport-https curl gnupg -y
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | gpg --dearmor >bazel-archive-keyring.gpg
+    sudo mv bazel-archive-keyring.gpg /usr/share/keyrings
+    echo "deb [arch=amd64 signed-by=/usr/share/keyrings/bazel-archive-keyring.gpg] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+    sudo apt update && sudo apt install bazel
+
     version=`python3 --version | head -n 1 | awk -F ' ' '{print $2}'`
     major=`echo $version | awk -F '.' '{print $2}'`
     if [ $major -lt 9 ]; then

@@ -47,5 +47,5 @@
 [http]
 	cookiefile = ~/.gitcookies
 [gpg]
-	program = gpg2
+	program = gpg
 [user]
