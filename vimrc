@@ -100,6 +100,7 @@ autocmd FileType cc ClangFormatAutoEnable
 autocmd FileType hh ClangFormatAutoEnable
 autocmd FileType cxx ClangFormatAutoEnable
 autocmd FileType hxx ClangFormatAutoEnable
+autocmd FileType proto ClangFormatAutoDisable
 
 " detects the style file like .clang-format
 let g:clang_format#detect_style_file=1
