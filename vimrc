@@ -70,6 +70,7 @@ let g:ale_linters = {
   \   'go': ['gofmt', 'golint'],
   \   'c': ['clangd', 'gcc'],
   \   'cpp': ['clangd', 'g++'],
+  \   'proto': ['clang-format'],
   \ }
 
 " vim-perl/vim-perl
@@ -101,7 +102,7 @@ autocmd FileType cc ClangFormatAutoEnable
 autocmd FileType hh ClangFormatAutoEnable
 autocmd FileType cxx ClangFormatAutoEnable
 autocmd FileType hxx ClangFormatAutoEnable
-autocmd FileType proto ClangFormatAutoDisable
+autocmd FileType proto ClangFormatAutoEnable
 
 " detects the style file like .clang-format
 let g:clang_format#detect_style_file=1
@@ -109,7 +110,7 @@ let g:clang_format#auto_format=1
 let g:clang_format#filetype_style_options = {
         \ "proto" : {
         \     "Language" : "Proto",
-        \     "DisableFormat" : "true"
+        \     "DisableFormat" : "false"
         \ },
         \ "cpp" : {
         \     "Language" : "Cpp",
