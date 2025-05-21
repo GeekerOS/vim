@@ -15,6 +15,7 @@ Plug 'zivyangll/git-blame.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-scripts/DoxygenToolkit.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-eunuch'
 
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
