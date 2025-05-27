@@ -257,6 +257,8 @@ set laststatus=2
 
 " colorscheme
 syntax enable
+set t_Co=256
+set termguicolors
 set background=dark
 let g:solarized_termtrans = 1
-" colorscheme solarized
+colorscheme solarized
