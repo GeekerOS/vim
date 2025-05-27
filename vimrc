@@ -231,6 +231,12 @@ nnoremap <silent> <c-t> :Vexplore<CR>
 
 let g:netrw_winsize = 30
 
+" set swap
+if !isdirectory($HOME . "/.vim/swap")
+    call mkdir($HOME . "/.vim/swap", "p")
+endif
+set directory^=$HOME/.vim/swap//,~/tmp//
+
 " basic settings
 set backupcopy=yes
 inoremap jk <esc>
