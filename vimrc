@@ -21,6 +21,9 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'fatih/vim-go'
+" NASM 语法高亮
+Plug 'hashivim/vim-terraform'  " 提供基础汇编高亮
+Plug 'frazrepo/vim-rainbow'    " 彩虹括号，可选但推荐
 
 call plug#end()
 
@@ -73,6 +76,13 @@ let g:ale_linters = {
   \   'cpp': ['clangd', 'g++'],
   \   'proto': ['clang-format'],
   \ }
+
+" nasm
+let g:rainbow_active = 1
+au FileType nasm setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+au FileType nasm setlocal commentstring=;%s  "
+au BufRead,BufNewFile *.asm set filetype=nasm
+au FileType nasm nnoremap <F5> :!nasm -f elf64 % -o %:r.o && ld %:r.o -o %:r && ./%:r<CR>
 
 " vim-perl/vim-perl
 let g:perl_enabled=1
@@ -171,6 +181,12 @@ let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
 let g:ycm_clangd_uses_ycmd_caching = 0
 " Use installed clangd, not YCM-bundled clangd which doesn't get updates.
 let g:ycm_clangd_binary_path = exepath("clangd")
+
+" support asm
+let g:ycm_filetype_whitelist = { 'nasm': 1 , 'asm': 1}
+let g:ycm_semantic_triggers = {
+  \ 'nasm': ['.', '->', ' ', '\t']
+  \ }
 
 " vim-scripts/DoxygenToolkit.vim
 
