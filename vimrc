@@ -21,6 +21,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'vim-perl/vim-perl', { 'for': 'perl', 'do': 'make clean carp dancer highlight-all-pragmas moose test-more try-tiny' }
 Plug 'fatih/vim-go'
+
 " NASM 语法高亮
 Plug 'hashivim/vim-terraform'  " 提供基础汇编高亮
 Plug 'frazrepo/vim-rainbow'    " 彩虹括号，可选但推荐
@@ -183,10 +184,10 @@ let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_binary_path = exepath("clangd")
 
 " support asm
-let g:ycm_filetype_whitelist = { 'nasm': 1 , 'asm': 1}
-let g:ycm_semantic_triggers = {
-  \ 'nasm': ['.', '->', ' ', '\t']
-  \ }
+" let g:ycm_filetype_whitelist = { 'nasm': 1 , 'asm': 1}
+" let g:ycm_semantic_triggers = {
+"  \ 'nasm': ['.', '->', ' ', '\t']
+"  \ }
 
 " vim-scripts/DoxygenToolkit.vim
 
